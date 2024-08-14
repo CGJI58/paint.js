@@ -1,0 +1,33 @@
+{
+  "name": "vanilajs__paintjs",
+  "version": "1.0.0",
+  "description": "Painting Board made with VanillaJS",
+  "main": "app.js",
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build",
+    "deploy": "gulp deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CGJI58/paintjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CGJI58/paintjs/issues"
+  },
+  "homepage": "https://github.com/CGJI58/paintjs",
+  "dependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/register": "^7.21.0",
+    "babelify": "^10.0.0",
+    "del": "^7.0.0",
+    "gulp": "^4.0.2",
+    "gulp-bro": "^2.0.0",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-webserver": "^0.9.1",
+    "uglifyify": "^5.0.2"
+  }
+}
