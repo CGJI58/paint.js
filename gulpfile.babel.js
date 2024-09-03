@@ -1,6 +1,6 @@
 import gulp from "gulp";
-// import gulpGhPages from "gulp-gh-pages";
-// import { deleteAsync } from "del";
+import gulpGhPages from "gulp-gh-pages";
+import { deleteAsync } from "del";
 import ws from "gulp-webserver";
 import bro from "gulp-bro";
 import babelify from "babelify";
@@ -11,18 +11,18 @@ const routes = {
     dest: "build",
   },
   css: {
-    src: "./src/*.css",
-    dest: "build",
+    src: "./src/css/*.css",
+    dest: "build/css",
   },
   js: {
-    src: "./src/app.js",
-    dest: "build",
+    src: "./src/js/app.js",
+    dest: "build/js",
   },
 };
 
 const html = () => gulp.src(routes.html.src).pipe(gulp.dest(routes.html.dest));
 
-// const clean = async () => await deleteAsync(["build/", ".publish"]);
+const clean = async () => await deleteAsync(["build/", ".publish"]);
 
 const webserver = () =>
   gulp.src("build").pipe(ws({ livereload: true, open: true }));
@@ -42,14 +42,14 @@ const js = () =>
     )
     .pipe(gulp.dest(routes.js.dest));
 
-// const gh = () => gulp.src("build/*").pipe(gulpGhPages());
+const gh = () => gulp.src("src/index.html").pipe(gulpGhPages());
 
 const assets = gulp.series([html, styles, js]);
 
-// export const build = gulp.series([clean, assets]);
-export const build = gulp.series([assets]);
+export const build = gulp.series([clean, assets]);
 
 export const dev = gulp.series([build, webserver]);
 
-// export const deploy = gulp.series([build, gh, clean]);
-// export const deploy = gulp.series([build, gh]);
+export const deploy = gulp.series([build, gh, clean]);
+
+// export const deploy = gulp.series([gh]);
